@@ -47,7 +47,7 @@ final class INIDecoder {
     
     public init(text: String) throws {
         let splittedText = text.components(separatedBy: .newlines)
-        var title = ""
+        var title: String? = nil
         
         for line in splittedText {
             if line != "" {
@@ -57,13 +57,17 @@ final class INIDecoder {
                         title = newTitle
                         
                     case .properties(let property, let value):
-                        if var sections = data[title] {
-                            sections[property] = value
-                            data[title] = sections
+                        if let checkedTitle = title {
+                            if var sections = data[checkedTitle] {
+                                sections[property] = value
+                                data[checkedTitle] = sections
+                            } else {
+                                var sections: [String: String] = [:]
+                                sections[property] = value
+                                data[checkedTitle] = sections
+                            }
                         } else {
-                            var sections: [String: String] = [:]
-                            sections[property] = value
-                            data[title] = sections
+                            throw Exception.invalidSyntax
                         }
                     }
                 }
