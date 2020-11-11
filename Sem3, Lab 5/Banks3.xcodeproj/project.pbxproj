@@ -1,0 +1,366 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A527F40F255A29F3002124E8 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = A527F40E255A29F3002124E8 /* main.swift */; };
+		A527F417255A2A37002124E8 /* BankingSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = A527F416255A2A37002124E8 /* BankingSystem.swift */; };
+		A527F41A255A2A9A002124E8 /* Bank.swift in Sources */ = {isa = PBXBuildFile; fileRef = A527F419255A2A9A002124E8 /* Bank.swift */; };
+		A527F431255A3982002124E8 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A527F430255A3982002124E8 /* String+Extensions.swift */; };
+		A527F434255A440E002124E8 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = A527F433255A440E002124E8 /* Client.swift */; };
+		A527F43B255A4E5D002124E8 /* BankTerms.swift in Sources */ = {isa = PBXBuildFile; fileRef = A527F43A255A4E5D002124E8 /* BankTerms.swift */; };
+		A527F440255A4EF4002124E8 /* ClientInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A527F43F255A4EF4002124E8 /* ClientInformation.swift */; };
+		A527F446255A5BEE002124E8 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = A527F445255A5BEE002124E8 /* Account.swift */; };
+		A527F44B255A5D51002124E8 /* AccountType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A527F44A255A5D51002124E8 /* AccountType.swift */; };
+		A527F47D255BB559002124E8 /* SpecifiedInformationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A527F47C255BB559002124E8 /* SpecifiedInformationType.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A527F409255A29F3002124E8 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		A527F40B255A29F3002124E8 /* Banks3 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Banks3; sourceTree = BUILT_PRODUCTS_DIR; };
+		A527F40E255A29F3002124E8 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		A527F416255A2A37002124E8 /* BankingSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankingSystem.swift; sourceTree = "<group>"; };
+		A527F419255A2A9A002124E8 /* Bank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bank.swift; sourceTree = "<group>"; };
+		A527F430255A3982002124E8 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		A527F433255A440E002124E8 /* Client.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		A527F43A255A4E5D002124E8 /* BankTerms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankTerms.swift; sourceTree = "<group>"; };
+		A527F43F255A4EF4002124E8 /* ClientInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientInformation.swift; sourceTree = "<group>"; };
+		A527F445255A5BEE002124E8 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		A527F44A255A5D51002124E8 /* AccountType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountType.swift; sourceTree = "<group>"; };
+		A527F47C255BB559002124E8 /* SpecifiedInformationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecifiedInformationType.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A527F408255A29F3002124E8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A527F402255A29F3002124E8 = {
+			isa = PBXGroup;
+			children = (
+				A527F40D255A29F3002124E8 /* Banks3 */,
+				A527F40C255A29F3002124E8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A527F40C255A29F3002124E8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A527F40B255A29F3002124E8 /* Banks3 */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A527F40D255A29F3002124E8 /* Banks3 */ = {
+			isa = PBXGroup;
+			children = (
+				A527F40E255A29F3002124E8 /* main.swift */,
+				A527F416255A2A37002124E8 /* BankingSystem.swift */,
+				A527F436255A4E3B002124E8 /* BankingManagerEntity */,
+				A527F442255A4FD4002124E8 /* Extensions */,
+			);
+			path = Banks3;
+			sourceTree = "<group>";
+		};
+		A527F436255A4E3B002124E8 /* BankingManagerEntity */ = {
+			isa = PBXGroup;
+			children = (
+				A527F438255A4E46002124E8 /* Bank */,
+				A527F43D255A4EE0002124E8 /* Client */,
+				A527F448255A5BF1002124E8 /* Account */,
+			);
+			path = BankingManagerEntity;
+			sourceTree = "<group>";
+		};
+		A527F438255A4E46002124E8 /* Bank */ = {
+			isa = PBXGroup;
+			children = (
+				A527F419255A2A9A002124E8 /* Bank.swift */,
+				A527F43A255A4E5D002124E8 /* BankTerms.swift */,
+			);
+			path = Bank;
+			sourceTree = "<group>";
+		};
+		A527F43D255A4EE0002124E8 /* Client */ = {
+			isa = PBXGroup;
+			children = (
+				A527F433255A440E002124E8 /* Client.swift */,
+				A527F43F255A4EF4002124E8 /* ClientInformation.swift */,
+				A527F44A255A5D51002124E8 /* AccountType.swift */,
+				A527F47C255BB559002124E8 /* SpecifiedInformationType.swift */,
+			);
+			path = Client;
+			sourceTree = "<group>";
+		};
+		A527F442255A4FD4002124E8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A527F430255A3982002124E8 /* String+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A527F448255A5BF1002124E8 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				A527F445255A5BEE002124E8 /* Account.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A527F40A255A29F3002124E8 /* Banks3 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A527F412255A29F3002124E8 /* Build configuration list for PBXNativeTarget "Banks3" */;
+			buildPhases = (
+				A527F407255A29F3002124E8 /* Sources */,
+				A527F408255A29F3002124E8 /* Frameworks */,
+				A527F409255A29F3002124E8 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Banks3;
+			productName = Banks3;
+			productReference = A527F40B255A29F3002124E8 /* Banks3 */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A527F403255A29F3002124E8 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1210;
+				LastUpgradeCheck = 1210;
+				TargetAttributes = {
+					A527F40A255A29F3002124E8 = {
+						CreatedOnToolsVersion = 12.1;
+					};
+				};
+			};
+			buildConfigurationList = A527F406255A29F3002124E8 /* Build configuration list for PBXProject "Banks3" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A527F402255A29F3002124E8;
+			productRefGroup = A527F40C255A29F3002124E8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A527F40A255A29F3002124E8 /* Banks3 */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A527F407255A29F3002124E8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A527F431255A3982002124E8 /* String+Extensions.swift in Sources */,
+				A527F41A255A2A9A002124E8 /* Bank.swift in Sources */,
+				A527F40F255A29F3002124E8 /* main.swift in Sources */,
+				A527F43B255A4E5D002124E8 /* BankTerms.swift in Sources */,
+				A527F434255A440E002124E8 /* Client.swift in Sources */,
+				A527F446255A5BEE002124E8 /* Account.swift in Sources */,
+				A527F440255A4EF4002124E8 /* ClientInformation.swift in Sources */,
+				A527F47D255BB559002124E8 /* SpecifiedInformationType.swift in Sources */,
+				A527F44B255A5D51002124E8 /* AccountType.swift in Sources */,
+				A527F417255A2A37002124E8 /* BankingSystem.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A527F410255A29F3002124E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A527F411255A29F3002124E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		A527F413255A29F3002124E8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RN4699K8KE;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A527F414255A29F3002124E8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = RN4699K8KE;
+				ENABLE_HARDENED_RUNTIME = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A527F406255A29F3002124E8 /* Build configuration list for PBXProject "Banks3" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A527F410255A29F3002124E8 /* Debug */,
+				A527F411255A29F3002124E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A527F412255A29F3002124E8 /* Build configuration list for PBXNativeTarget "Banks3" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A527F413255A29F3002124E8 /* Debug */,
+				A527F414255A29F3002124E8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A527F403255A29F3002124E8 /* Project object */;
+}
