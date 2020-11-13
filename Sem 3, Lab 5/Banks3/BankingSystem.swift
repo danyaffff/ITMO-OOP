@@ -33,6 +33,9 @@ final class BankingSystem: CustomStringConvertible {
     /// Returns the added banks.
     private(set) var banks: [Bank] = []
     
+    /// Returns the current date.
+    private var currentDate = Date()
+    
     var description: String {
         var returned: [String] = []
         
@@ -66,8 +69,10 @@ final class BankingSystem: CustomStringConvertible {
     func moveInTime(to date: Date) {
         let calendar = Calendar.current
         
-        let from = calendar.startOfDay(for: Date())
+        let from = calendar.startOfDay(for: currentDate)
         let to = calendar.startOfDay(for: date)
+        
+        currentDate = date
         
         let components = calendar.dateComponents([.day], from: from, to: to)
         
