@@ -9,6 +9,7 @@ import Foundation
 
 extension BankingSystem {
     
+    /// The bank class that describes the bank.
     final class Bank: CustomStringConvertible {
         
         //MARK: - Properties
@@ -31,6 +32,7 @@ extension BankingSystem {
         /// Return the clients of bank.
         private(set) var clients: [Client] = []
         
+        /// Time shift in days
         private var timeShift: Day = 0
         
         var description: String {
@@ -43,7 +45,7 @@ extension BankingSystem {
             
             if let depositExpirationDate = terms.deposit.expirationDate, let depositPercent = terms.deposit.percent {
                 
-                let percent = "<\(depositPercent.before.value)Р — \(depositPercent.before.percent)%, \(depositPercent.before.value)—\(depositPercent.after.value)Р — \(depositPercent.between)%, >\(depositPercent.after.value)Р — \(depositPercent.after.percent)%"
+                let percent = "<\(depositPercent.before.value)Р — \(depositPercent.before.percent)%, \(depositPercent.before.value)—\(depositPercent.after.value)Р — \(depositPercent.between.percent)%, >\(depositPercent.after.value)Р — \(depositPercent.after.percent)%"
                 
                 returnedTerms.append("· Deposit: \(formatter.string(from: depositExpirationDate)), \(percent)")
             }
@@ -87,13 +89,17 @@ extension BankingSystem {
             for term in terms {
                 switch term {
                 case .debit(let percent):
-                    self.terms.debit = percent
+                    self.terms.debit <= percent
                 case .deposit(let expirationDate, let percent):
+                    guard expirationDate > Date() else {
+                        print("Wrong date.")
+                        return
+                    }
                     self.terms.deposit.expirationDate = expirationDate
-                    self.terms.deposit.percent = percent
+                    self.terms.deposit.percent <= percent
                 case .credit(let limit, let commission):
                     self.terms.credit.limit = limit
-                    self.terms.credit.commission = commission
+                    self.terms.credit.commission <= commission
                 }
             }
         }

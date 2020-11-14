@@ -14,18 +14,6 @@ The BankingSystem class provides a programmatic interface for interacting with t
 */
 final class BankingSystem: CustomStringConvertible {
     
-    /// Percent, CGFloat from 0 to 100
-    typealias Percent = CGFloat
-    
-    /// Sum, UInt
-    typealias Sum = UInt
-    
-    /// Deposit percent, (before: (value: Sum, percent: Percent), between: Percent, after: (value: Sum, percent: Percent))
-    typealias DepositPercent = (before: (value: Sum, percent: Percent), between: Percent, after: (value: Sum, percent: Percent))
-    
-    /// Day, UInt
-    typealias Day = UInt
-    
     //MARK: - Properties
     /// Returns the shared system object.
     static let standard = BankingSystem()

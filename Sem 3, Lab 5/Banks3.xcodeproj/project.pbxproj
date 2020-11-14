@@ -17,6 +17,9 @@
 		A527F446255A5BEE002124E8 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = A527F445255A5BEE002124E8 /* Account.swift */; };
 		A527F44B255A5D51002124E8 /* AccountType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A527F44A255A5D51002124E8 /* AccountType.swift */; };
 		A527F47D255BB559002124E8 /* SpecifiedInformationType.swift in Sources */ = {isa = PBXBuildFile; fileRef = A527F47C255BB559002124E8 /* SpecifiedInformationType.swift */; };
+		A56F0D3E255F4CCA00883AAE /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = A56F0D3D255F4CCA00883AAE /* Typealiases.swift */; };
+		A5B2F501255F559C0068140B /* BankingSystem.Percent+Extenions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B2F500255F559C0068140B /* BankingSystem.Percent+Extenions.swift */; };
+		A5B2F504255F55D10068140B /* BankingSystem.Day+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5B2F503255F55D10068140B /* BankingSystem.Day+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -43,6 +46,9 @@
 		A527F445255A5BEE002124E8 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
 		A527F44A255A5D51002124E8 /* AccountType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountType.swift; sourceTree = "<group>"; };
 		A527F47C255BB559002124E8 /* SpecifiedInformationType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecifiedInformationType.swift; sourceTree = "<group>"; };
+		A56F0D3D255F4CCA00883AAE /* Typealiases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
+		A5B2F500255F559C0068140B /* BankingSystem.Percent+Extenions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BankingSystem.Percent+Extenions.swift"; sourceTree = "<group>"; };
+		A5B2F503255F55D10068140B /* BankingSystem.Day+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BankingSystem.Day+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +85,7 @@
 				A527F416255A2A37002124E8 /* BankingSystem.swift */,
 				A527F436255A4E3B002124E8 /* BankingManagerEntity */,
 				A527F442255A4FD4002124E8 /* Extensions */,
+				A56F0D3D255F4CCA00883AAE /* Typealiases.swift */,
 			);
 			path = Banks3;
 			sourceTree = "<group>";
@@ -117,6 +124,8 @@
 			isa = PBXGroup;
 			children = (
 				A527F430255A3982002124E8 /* String+Extensions.swift */,
+				A5B2F500255F559C0068140B /* BankingSystem.Percent+Extenions.swift */,
+				A5B2F503255F55D10068140B /* BankingSystem.Day+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -188,11 +197,14 @@
 			files = (
 				A527F431255A3982002124E8 /* String+Extensions.swift in Sources */,
 				A527F41A255A2A9A002124E8 /* Bank.swift in Sources */,
+				A5B2F501255F559C0068140B /* BankingSystem.Percent+Extenions.swift in Sources */,
 				A527F40F255A29F3002124E8 /* main.swift in Sources */,
 				A527F43B255A4E5D002124E8 /* BankTerms.swift in Sources */,
 				A527F434255A440E002124E8 /* Client.swift in Sources */,
 				A527F446255A5BEE002124E8 /* Account.swift in Sources */,
+				A5B2F504255F55D10068140B /* BankingSystem.Day+Extensions.swift in Sources */,
 				A527F440255A4EF4002124E8 /* ClientInformation.swift in Sources */,
+				A56F0D3E255F4CCA00883AAE /* Typealiases.swift in Sources */,
 				A527F47D255BB559002124E8 /* SpecifiedInformationType.swift in Sources */,
 				A527F44B255A5D51002124E8 /* AccountType.swift in Sources */,
 				A527F417255A2A37002124E8 /* BankingSystem.swift in Sources */,

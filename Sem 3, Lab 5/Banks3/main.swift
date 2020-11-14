@@ -9,7 +9,7 @@ import Foundation
 
 BankingSystem.standard.createBank().set(name: "Сбербанк", limit: 5000, terms: [
     .debit(percent: 5),
-    .deposit(expirationDate: Date(timeIntervalSinceNow: 60 * 60 * 24), percent: (before: (value: 50000, percent: 3), between: 3.5, after: (value: 100000, percent: 4))),
+    .deposit(expirationDate: Date(timeIntervalSinceNow: 60 * 60 * 24), percent: BankingSystem.DepositPercent(before: .init(value: 50000, percent: 3), between: .init(percent: 3.5), after: .init(value: 100000, percent: 4))),
     .credit(limit: 6000, commission: 22)
 ])
 

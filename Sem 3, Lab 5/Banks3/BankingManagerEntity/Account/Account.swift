@@ -154,7 +154,7 @@ extension BankingSystem.Bank.Client {
         /// Moves time forward.
         func moveInTime(by days: BankingSystem.Day) {
             for day in 0 ..< days {
-                super.updateAddableSum(sum: BankingSystem.Sum(floor(BankingSystem.Percent(super.sum) * percent / 100)))
+                super.updateAddableSum(sum: BankingSystem.Sum(floor(BankingSystem.Percent(super.sum) * percent.decimal)))
                 
                 let monthday = Calendar.current.ordinality(of: .day, in: .month, for: Date(timeIntervalSinceNow: 60 * 60 * 24 * TimeInterval(day)))
                 
@@ -196,7 +196,7 @@ extension BankingSystem.Bank.Client {
         }
 
         func transfer(to account: BankingSystem.Bank.Client.Account?, sum: BankingSystem.Sum) {
-            guard Date(timeIntervalSinceNow: 60 * 60 * 24 * TimeInterval(timeShift)) >= expirationDate else {
+            guard Date(timeIntervalSinceNow: timeShift.day) >= expirationDate else {
                 print("The expiration date has not yet expired.\n")
                 return
             }
@@ -205,7 +205,7 @@ extension BankingSystem.Bank.Client {
         }
 
         func withdraw(sum: BankingSystem.Sum) {
-            guard Date(timeIntervalSinceNow: 60 * 60 * 24 * TimeInterval(timeShift)) >= expirationDate else {
+            guard Date(timeIntervalSinceNow: timeShift.day) >= expirationDate else {
                 print("The expiration date has not yet expired.\n")
                 return
             }
@@ -223,14 +223,14 @@ extension BankingSystem.Bank.Client {
             
             for day in 0 ..< days {
                 if super.sum < percent.before.value {
-                    super.updateAddableSum(sum: BankingSystem.Sum(floor(BankingSystem.Percent(super.sum) * percent.before.percent / 100)))
+                    super.updateAddableSum(sum: BankingSystem.Sum(floor(BankingSystem.Percent(super.sum) * percent.before.percent.decimal)))
                 } else if super.sum > percent.after.value {
-                    super.updateAddableSum(sum: BankingSystem.Sum(floor(BankingSystem.Percent(super.sum) * percent.after.percent / 100)))
+                    super.updateAddableSum(sum: BankingSystem.Sum(floor(BankingSystem.Percent(super.sum) * percent.after.percent.decimal)))
                 } else {
-                    super.updateAddableSum(sum: BankingSystem.Sum(floor(BankingSystem.Percent(super.sum) * percent.between / 100)))
+                    super.updateAddableSum(sum: BankingSystem.Sum(floor(BankingSystem.Percent(super.sum) * percent.between.percent.decimal)))
                 }
                 
-                let monthday = Calendar.current.ordinality(of: .day, in: .month, for: Date(timeIntervalSinceNow: 60 * 60 * 24 * TimeInterval(day)))
+                let monthday = Calendar.current.ordinality(of: .day, in: .month, for: Date(timeIntervalSinceNow: day.day))
                 
                 if monthday == 1 {
                     super.addAddableSumToSum()

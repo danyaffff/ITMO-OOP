@@ -8,6 +8,8 @@
 import Foundation
 
 extension BankingSystem.Bank {
+    
+    /// The class that describes the client.
     final class Client: CustomStringConvertible {
         
         //MARK: - Properties
