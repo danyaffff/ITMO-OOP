@@ -7,4 +7,4 @@
 4. [Backups](https://github.com/danyaffff/ITMO-OOP/tree/master/Sem%203%2C%20Lab%204)
 5. [Banks](https://github.com/danyaffff/ITMO-OOP/tree/master/Sem%203%2C%20Lab%205)
 
-[Tasks](https://drive.google.com/drive/folders/1-KTjB994_y5f6Es5lCE0y6L4tMRQhMq_)
+[Tasks](https://github.com/danyaffff/ITMO-OOP/tree/master/Tasks)
