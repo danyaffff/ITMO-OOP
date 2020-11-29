@@ -36,7 +36,7 @@ extension ReportSystem.ProjectContext {
         
         /// Adds new stages to project.
         func add(stages: [StageRepresentation]) -> Project? {
-            guard stages.isEmpty else { return nil }
+            guard self.stages.isEmpty else { return nil }
             
             for stage in stages {
                 switch stage {

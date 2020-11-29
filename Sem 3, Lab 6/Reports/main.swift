@@ -7,33 +7,6 @@
 
 import Foundation
 
-//let danya = ReportSystem.default.employeesContext.createEmployee(name: "Данбка")
-//let eugénie = ReportSystem.default.employeesContext.createEmployee(name: "Женбка❤️", head: danya)
-//if let danya = danya, let eugénie = eugénie {
-//    let project = ReportSystem.default.projectContext.createProject()?.add(stages: [
-//        .stage(message: "Первая стадия разработки", tasks: [
-//            .task(message: "Первое задание первой стадии", contructor: danya),
-//            .task(message: "Второе задание первой стадии разработки", contructor: eugénie)
-//        ]),
-//        .stage(message: "Вторая стадия разработки", tasks: [
-//            .task(message: "Первое задание второй стадии разработки", contructor: eugénie)
-//        ]),
-//        .stage(message: "Заключительная стадия разработки", tasks: [
-//            .task(message: "Последнее задание", contructor: danya)
-//        ])
-//    ])
-//
-//    if let task = ReportSystem.default.projectContext.project?.stages[0].tasks[1] {
-//        danya.delegate(task: task)
-//    }
-//
-//    danya.activate()
-//    eugénie.activate()
-//
-//    danya.complete()
-//    da
-//}
-
 let danya = ReportSystem.default.employeesContext.createEmployee(name: "Данбка")!
 let project = ReportSystem.default.projectContext.createProject()!.add(stages: [
     .stage(message: "Первая стадия", tasks: [
