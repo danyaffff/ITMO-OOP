@@ -9,21 +9,21 @@ import Foundation
 
 extension ReportSystem {
     
-    final class EmployeesContext: CustomStringConvertible {
+    public final class EmployeesContext: CustomStringConvertible {
         
         /// Returns the added employees.
-        private(set) var employees = [Employee]()
+        private(set) public var employees = [Employee]()
         
         /// Returns the team leader.
-        private(set) var teamLeader: Employee? = nil
+        private(set) public var teamLeader: Employee? = nil
         
-        var description: String {
+        public var description: String {
             guard let index = employees.firstIndex(where: { $0.head == nil }) else { return "" }
             return "\(employees[index])"
         }
         
         /// Creates new employee.
-        func createEmployee(name: String, head: Employee? = nil) -> Employee? {
+        public func createEmployee(name: String, head: Employee? = nil) -> Employee? {
             switch employees.count {
             case 0:
                 guard head == nil else { return nil }
@@ -36,6 +36,16 @@ extension ReportSystem {
             }
             
             return employees.last
+        }
+        
+        //MARK: - Structures
+        public enum ReportType {
+            
+            /// Create a day report.
+            case day
+            
+            /// Create a stage report.
+            case stage
         }
     }
 }

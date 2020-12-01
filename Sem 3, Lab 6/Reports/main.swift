@@ -16,18 +16,12 @@ let project = ReportSystem.default.projectContext.createProject()!.add(stages: [
     .stage(message: "Вторая стадия", tasks: [
         .task(message: "Последнее задание", contructor: danya)
     ])
+])!
+
+project.stages[0].add(tasks: [
+    .task(message: "Третье задание", contructor: danya)
 ])
 
-danya.activate()  // Активирует первое задание
-
-danya.complete()  // Выполняет первое задание
-
-//danya.createReport(message: "Репорт за первый день")  // Создает репорт
-
-print(danya.changes)
-
-//danya.report!.synchronize()  // Синхронизирует репорт и выполненые задания
-
-ReportSystem.default.move()  // Двигает время до завтра и автоматически синхронизирует изменения
+danya.createReport(title: "Заголовок", message: "Описание", type: .day)
 
 ReportSystem.default

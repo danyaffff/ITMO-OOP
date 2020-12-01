@@ -9,19 +9,19 @@ import Foundation
 
 extension ReportSystem.ProjectContext.Project {
     
-    final class Stage {
+    public final class Stage {
         
-        typealias Employee = ReportSystem.EmployeesContext.Employee
+        public typealias Employee = ReportSystem.EmployeesContext.Employee
         
         //MARK: - Properties
         /// Returns the id of stage.
-        let id: Int
+        public let id: Int
         
         /// Returns the tasks in stage.
-        private(set) var tasks = [Task]()
+        private(set) public var tasks = [Task]()
         
         /// Returns the added message.
-        private(set) var message: String
+        private(set) public var message: String
         
         //MARK: - Initialization
         /// Private initializator.
@@ -32,11 +32,12 @@ extension ReportSystem.ProjectContext.Project {
         
         //MARK: - Methods
         /// Returns new stage instance.
-        static func stage(id: Int, message: String) -> Stage {
+        public class func stage(id: Int, message: String) -> Stage {
             return Stage(id: id, message: message)
         }
         
-        func add(tasks: [TaskRepresentation]) {
+        /// Adds new tasks to current stage.
+        public func add(tasks: [TaskRepresentation]) {
             for (index, task) in tasks.enumerated() {
                 switch task {
                 case .task(let message, let contructor):
@@ -45,7 +46,10 @@ extension ReportSystem.ProjectContext.Project {
             }
         }
         
-        enum TaskRepresentation {
+        /// Represents main tasks fields.
+        public enum TaskRepresentation {
+            
+            /// Tasks representation.
             case task(message: String, contructor: Employee)
         }
     }

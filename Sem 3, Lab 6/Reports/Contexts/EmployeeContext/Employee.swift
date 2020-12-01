@@ -9,40 +9,40 @@ import Foundation
 
 extension ReportSystem.EmployeesContext {
     
-    final class Employee: Equatable, CustomStringConvertible {
+    public final class Employee: Equatable, CustomStringConvertible {
         
-        typealias Task = ReportSystem.ProjectContext.Project.Stage.Task
-        typealias Change = Task.Change
+        public typealias Task = ReportSystem.ProjectContext.Project.Stage.Task
+        public typealias Change = Task.Change
         
         //MARK: - Properties
         /// Returns the id of employee.
-        let id: Int
+        public let id: Int
         
         /// Returns the name of employee.
-        let name: String
+        public let name: String
         
         /// Returns the head of employee.
-        private(set) var head: Employee?
+        private(set) public var head: Employee?
+        
+        /// Returns distance from team leader.
+        private(set) fileprivate var distance: Int
         
         /// Returns the subordinates of employee.
-        private(set) var subordinates = [Employee]()
+        private(set) public var subordinates = [Employee]()
         
         /// Returns tasks that delegated to current employee.
-        private(set) var delegatedTasks = [Task]()
-        
-        /// Returns distance from teamlead.
-        private(set) var distance: Int
-        
+        private(set) public var delegatedTasks = [Task]()
+
         /// Returns the unsynchronized changes.
-        private(set) var changes = [(id: Int, task: Task, change: Change)]()
-        
+        private(set) public var changes = [(id: Int, task: Task, change: Change)]()
+
         /// Returns the current report.
-        private(set) var report: Report? = nil
+        internal(set) var report: Report? = nil
         
         /// Returns all reports made by the employee.
         private(set) var reports = [Report]()
         
-        var description: String {
+        public var description: String {
             var returned: [String] = ["\(id). \(name)"]
             
             if subordinates.count > 0 {
@@ -60,7 +60,7 @@ extension ReportSystem.EmployeesContext {
             return returned.joined(separator: "\n")
         }
         
-        //MARK: - Initialization
+        //MARK: - Initializer
         /// Private employee initializer.
         private init(id: Int, name: String, head: Employee?, distance: Int) {
             self.id = id
@@ -69,8 +69,9 @@ extension ReportSystem.EmployeesContext {
             self.distance = distance
         }
         
+        //MARK: - Methods
         /// Returns new employee instance.
-        static func employee(id: Int, name: String, head: Employee? = nil) -> Employee {
+        public class func employee(id: Int, name: String, head: Employee? = nil) -> Employee {
             var distance = 0
             
             if let h = head {
@@ -92,78 +93,67 @@ extension ReportSystem.EmployeesContext {
         }
 
         /// Delegates the certain task to emloyee.
-        func delegate(task: Task) {
+        public func delegate(task: Task) {
             if delegatedTasks.contains(where: { $0 == task }) { return }
-            
+
             delegatedTasks.append(task)
-            
+
             if task.contructor != self {
                 task.contructor.remove(task: task)
             }
-            
+
             task.set(contructor: self)
         }
-        
-        /// Removes the sertain task (this is only used for redelegation).
+
+        /// Removes the certain task (this is only used for redelegation).
         private func remove(task: Task) {
             guard let index = delegatedTasks.firstIndex(where: { $0 == task }) else { return }
-            
+
             delegatedTasks.remove(at: index)
         }
-        
+
         /// Reopens the certain task.
-        func reopen(task: Task) {
+        public func reopen(task: Task) {
             if task.state != .resolved { return }
-            
+
             task.set(state: .open)
             changes.append((id: changes.count, task: task, change: .open(date: ReportSystem.default.date)))
         }
-        
+
         /// Activates the first open task.
-        func activate() {
+        public func activate() {
             if delegatedTasks.contains(where: { $0.state == .active }) { return }
-            
+
             if let index = delegatedTasks.firstIndex(where: { $0.state == .open }) {
                 delegatedTasks[index].set(state: .active)
                 changes.append((id: changes.count, task: delegatedTasks[index], change: .activate(date: ReportSystem.default.date)))
             }
         }
-        
+
         /// Completes the active task.
-        func complete() {
+        public func complete() {
             if let index = delegatedTasks.firstIndex(where: { $0.state == .active }) {
                 delegatedTasks[index].set(state: .resolved)
                 changes.append((id: changes.count, task: delegatedTasks[index], change: .resolve(date: ReportSystem.default.date)))
             }
         }
-        
+
         /// Creates new report's draft.
-        func createReport(ofType type: ReportType, message: String) {
+        public func createReport(title: String, message: String, type: ReportType) {
+            guard report == nil else { return }
+            
             switch type {
             case .day:
-                guard report == nil else { return }
-                
-                report = Report.create(date: ReportSystem.default.date, message: message, empolyee: self)
-                
+                report = DailyReport.create(id: ReportSystem.default.projectContext.project!.numberOfReports, title: title, message: message, date: ReportSystem.default.date, employee: self)
+                ReportSystem.default.projectContext.project!.numberOfReports += 1
+
             case .stage:
-                if self.head == nil {
-                    ReportSystem.default.projectContext.project?.create()
-                }
+                report = StageReport.create(id: ReportSystem.default.projectContext.project!.stageReports.count, title: title, message: message, date: ReportSystem.default.date, employee: self)
             }
         }
-        
-        static func == (lhs: Employee, rhs: Employee) -> Bool {
+
+        public static func == (lhs: Employee, rhs: Employee) -> Bool {
             return lhs.id == rhs.id
-        }
-        
-        //MARK: - Structures
-        enum ReportType {
-            
-            /// Create a day report.
-            case day
-            
-            /// Create a stage report.
-            case stage
         }
     }
 }

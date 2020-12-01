@@ -9,13 +9,13 @@ import Foundation
 
 extension ReportSystem {
     
-    final class ProjectContext {
+    public final class ProjectContext {
         
         /// Returns the current project.
-        private(set) var project: Project? = nil
+        private(set) public var project: Project? = nil
         
         /// Creates the new project
-        func createProject() -> Project? {
+        public func createProject() -> Project? {
             guard project == nil else { return nil }
             project = Project.project()
             return project

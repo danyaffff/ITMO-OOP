@@ -9,26 +9,26 @@ import Foundation
 
 extension ReportSystem.ProjectContext.Project.Stage {
     
-    final class Task: Equatable {
+    public final class Task: Equatable {
         
-        typealias Stage = ReportSystem.ProjectContext.Project.Stage
-        typealias Employee = ReportSystem.EmployeesContext.Employee
+        public typealias Stage = ReportSystem.ProjectContext.Project.Stage
+        public typealias Employee = ReportSystem.EmployeesContext.Employee
         
         //MARK: - Properties
         /// Returns the task id.
-        let id: Int
+        public let id: Int
         
         /// Returns the task's state.
-        private(set) var state: TaskState = .open
+        private(set) public var state: TaskState = .open
         
         /// Returns the stage the task is in.
-        let stage: Stage
+        public let stage: Stage
         
         /// Returns the task's contructor.
-        private(set) var contructor: Employee
+        private(set) public var contructor: Employee
         
         /// Returns the task's message.
-        private(set) var message: String
+        private(set) public var message: String
         
         //MARK: - Initialization
         /// Private initilizator.
@@ -41,34 +41,41 @@ extension ReportSystem.ProjectContext.Project.Stage {
         
         //MARK: - Methods
         /// Returns new task instance
-        static func task(id: Int, message: String, contructor: Employee, stage: Stage) -> Task {
+        public class func task(id: Int, message: String, contructor: Employee, stage: Stage) -> Task {
             let task = Task(id: id, message: message, contructor: contructor, stage: stage)
             contructor.delegate(task: task)
             return task
         }
         
         /// Sets new contructor
-        func set(contructor: Employee) {
+        internal func set(contructor: Employee) {
             self.contructor = contructor
         }
         
         /// Sets task state.
-        func set(state: TaskState) {
+        internal func set(state: TaskState) {
             self.state = state
         }
         
-        static func == (lhs: Task, rhs: Task) -> Bool {
+        public static func == (lhs: Task, rhs: Task) -> Bool {
             return lhs.stage.id == rhs.stage.id && lhs.id == rhs.id
         }
         
-        enum TaskState {
+        /// Tasks state.
+        public enum TaskState {
+            
+            /// Task open.
             case open
+            
+            /// Task active.
             case active
+            
+            /// Task resolved.
             case resolved
         }
         
         /// Change type.
-        enum Change: Equatable {
+        public enum Change: Equatable {
             
             /// Opened the task.
             case open(date: Date)

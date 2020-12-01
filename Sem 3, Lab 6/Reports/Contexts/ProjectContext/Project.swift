@@ -9,20 +9,27 @@ import Foundation
 
 extension ReportSystem.ProjectContext {
     
-    final class Project {
+    public final class Project {
         
-        typealias TaskRepresentation = ReportSystem.ProjectContext.Project.Stage.TaskRepresentation
-        typealias Report = ReportSystem.EmployeesContext.Report
+        public typealias TaskRepresentation = ReportSystem.ProjectContext.Project.Stage.TaskRepresentation
+        public typealias DailyReport = ReportSystem.EmployeesContext.DailyReport
+        public typealias StageReport = ReportSystem.EmployeesContext.StageReport
         
         //MARK: - Properties
         /// Returns the project's stages.
-        private(set) var stages = [Stage]()
+        private(set) public var stages = [Stage]()
         
         /// Returns the current stage.
-        private(set) var stage: Stage? = nil
+        private(set) public var stage: Stage? = nil
         
-        /// Returns stage reports.
-        private(set) var reports = [Report]()
+        /// Returns closded daily reports
+        internal(set) public var dailyReports = [DailyReport]()
+        
+        /// Returns closed stage reports.
+        internal(set) public var stageReports = [StageReport]()
+        
+        /// Returns the real number of reports
+        internal var numberOfReports: Int = 0
         
         //MARK: - Initialization
         /// Private initializatior.
@@ -30,12 +37,12 @@ extension ReportSystem.ProjectContext {
         
         //MARK: - Methods
         /// Returns new project instance.
-        static func project() -> Project {
+        public class func project() -> Project {
             return Project()
         }
         
         /// Adds new stages to project.
-        func add(stages: [StageRepresentation]) -> Project? {
+        public func add(stages: [StageRepresentation]) -> Project? {
             guard self.stages.isEmpty else { return nil }
             
             for stage in stages {
@@ -53,12 +60,10 @@ extension ReportSystem.ProjectContext {
             return self
         }
         
-        /// Creates the new stage report.
-        func create() {
-            reports.append(Report.create(date: ReportSystem.default.date, message: "Отчет за стадию", empolyee: ReportSystem.default.employeesContext.teamLeader))
-        }
-        
-        enum StageRepresentation {
+        /// Represents main stage fields.
+        public enum StageRepresentation {
+            
+            /// Stage representation.
             case stage(message: String, tasks: [TaskRepresentation])
         }
     }
