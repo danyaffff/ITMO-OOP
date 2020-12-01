@@ -34,6 +34,7 @@ public final class ReportSystem {
         date += TimeInterval(60 * 60 * 24)
     }
     
+    /// Closes reports for editing.
     private func closeReports() {
         for employee in employeesContext.employees {
             employee.report?.close()

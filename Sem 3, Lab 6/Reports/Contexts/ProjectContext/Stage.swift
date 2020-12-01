@@ -37,7 +37,7 @@ extension ReportSystem.ProjectContext.Project {
         }
         
         /// Adds new tasks to current stage.
-        public func add(tasks: [TaskRepresentation]) {
+        internal func add(tasks: [TaskRepresentation]) {
             for (index, task) in tasks.enumerated() {
                 switch task {
                 case .task(let message, let contructor):

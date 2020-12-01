@@ -12,7 +12,6 @@ extension ReportSystem.EmployeesContext {
     public final class DailyReport: Report {
         
         public typealias Task = ReportSystem.ProjectContext.Project.Stage.Task
-        public typealias Change = Task.Change
         
         //MARK: - Properties
         /// Returns the added changes.

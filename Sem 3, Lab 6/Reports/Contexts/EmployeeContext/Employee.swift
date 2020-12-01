@@ -11,8 +11,9 @@ extension ReportSystem.EmployeesContext {
     
     public final class Employee: Equatable, CustomStringConvertible {
         
+        public typealias Stage = ReportSystem.ProjectContext.Project.Stage
         public typealias Task = ReportSystem.ProjectContext.Project.Stage.Task
-        public typealias Change = Task.Change
+        public typealias TaskRepresentation = Stage.TaskRepresentation
         
         //MARK: - Properties
         /// Returns the id of employee.
@@ -103,6 +104,15 @@ extension ReportSystem.EmployeesContext {
             }
 
             task.set(contructor: self)
+        }
+        
+        /// Adds new tasks to the certain stage.
+        public func add(to stage: Stage, tasks: [TaskRepresentation]) {
+            stage.add(tasks: tasks)
+            
+            for task in stage.tasks[stage.tasks.count - tasks.count ..< stage.tasks.count] {
+                changes.append((id: changes.count, task: task, change: .add(date: ReportSystem.default.date)))
+            }
         }
 
         /// Removes the certain task (this is only used for redelegation).

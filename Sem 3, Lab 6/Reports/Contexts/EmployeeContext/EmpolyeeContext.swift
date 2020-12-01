@@ -47,5 +47,27 @@ extension ReportSystem {
             /// Create a stage report.
             case stage
         }
+        
+        /// Change type.
+        public enum Change: Equatable {
+            
+            /// Opened the task.
+            case open(date: Date)
+            
+            /// Activated the task.
+            case activate(date: Date)
+            
+            /// Resolved the task.
+            case resolve(date: Date)
+            
+            /// Added the task.
+            case add(date: Date)
+            
+            /// Changed the title.
+            case title(date: Date)
+            
+            /// Changed the message.
+            case message(date: Date)
+        }
     }
 }

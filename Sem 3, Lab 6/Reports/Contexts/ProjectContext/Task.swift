@@ -73,18 +73,5 @@ extension ReportSystem.ProjectContext.Project.Stage {
             /// Task resolved.
             case resolved
         }
-        
-        /// Change type.
-        public enum Change: Equatable {
-            
-            /// Opened the task.
-            case open(date: Date)
-            
-            /// Activated the task.
-            case activate(date: Date)
-            
-            /// Resolved the task.
-            case resolve(date: Date)
-        }
     }
 }
