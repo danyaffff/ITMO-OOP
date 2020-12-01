@@ -68,6 +68,7 @@ extension ReportSystem.EmployeesContext {
             
             state = .close
             employee.report = nil
+            employee.reports.append(self)
             
             switch type {
             case .day:

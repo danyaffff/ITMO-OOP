@@ -27,10 +27,21 @@ danya.createReport(title: "Заголовок", message: "Описание", typ
 danya.activate()
 danya.complete()
 
+danya.delegatedTasks[0].edit(field: .message(text: "Измененный комментарий к заданию"))
+
 danya.report!.edit(field: .title(text: "Измененный заголовок"))
-danya.report!.edit(field: .message(text: "Измененное описание"))
 
 danya.report!.synchronize()
+
+ReportSystem.default.move()
+
+danya.delegatedTasks[0].edit(field: .message(text: "Это ничего не должно поменять"))
+
+danya.createReport(title: "Второй отчет", message: "Описание второго отчета", type: .day)
+
+danya.report!.synchronize()
+
+ReportSystem.default.move()
 
 ReportSystem.default
 

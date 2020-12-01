@@ -35,13 +35,13 @@ extension ReportSystem.EmployeesContext {
         private(set) public var delegatedTasks = [Task]()
 
         /// Returns the unsynchronized changes.
-        private(set) public var changes = [(id: Int, task: Task, change: Change)]()
+        internal(set) public var changes = [(id: Int, task: Task, change: Change)]()
 
         /// Returns the current report.
         internal(set) var report: Report? = nil
         
         /// Returns all reports made by the employee.
-        private(set) var reports = [Report]()
+        internal(set) var reports = [Report]()
         
         public var description: String {
             var returned: [String] = ["\(id). \(name)"]
@@ -99,11 +99,11 @@ extension ReportSystem.EmployeesContext {
 
             delegatedTasks.append(task)
 
-            if task.contructor != self {
-                task.contructor.remove(task: task)
+            if task.employee != self {
+                task.employee.remove(task: task)
             }
-
-            task.set(contructor: self)
+            changes.append((id: changes.count, task: task, change: .employee(date: ReportSystem.default.date, employee: task.employee)))
+            task.set(employee: self)
         }
         
         /// Adds new tasks to the certain stage.
@@ -111,7 +111,7 @@ extension ReportSystem.EmployeesContext {
             stage.add(tasks: tasks)
             
             for task in stage.tasks[stage.tasks.count - tasks.count ..< stage.tasks.count] {
-                changes.append((id: changes.count, task: task, change: .add(date: ReportSystem.default.date)))
+                changes.append((id: changes.count, task: task, change: .add(date: ReportSystem.default.date, employee: self)))
             }
         }
 
@@ -127,7 +127,7 @@ extension ReportSystem.EmployeesContext {
             if task.state != .resolved { return }
 
             task.set(state: .open)
-            changes.append((id: changes.count, task: task, change: .open(date: ReportSystem.default.date)))
+            changes.append((id: changes.count, task: task, change: .open(date: ReportSystem.default.date, employee: self)))
         }
 
         /// Activates the first open task.
@@ -136,7 +136,7 @@ extension ReportSystem.EmployeesContext {
 
             if let index = delegatedTasks.firstIndex(where: { $0.state == .open }) {
                 delegatedTasks[index].set(state: .active)
-                changes.append((id: changes.count, task: delegatedTasks[index], change: .activate(date: ReportSystem.default.date)))
+                changes.append((id: changes.count, task: delegatedTasks[index], change: .activate(date: ReportSystem.default.date, employee: self)))
             }
         }
 
@@ -144,7 +144,7 @@ extension ReportSystem.EmployeesContext {
         public func complete() {
             if let index = delegatedTasks.firstIndex(where: { $0.state == .active }) {
                 delegatedTasks[index].set(state: .resolved)
-                changes.append((id: changes.count, task: delegatedTasks[index], change: .resolve(date: ReportSystem.default.date)))
+                changes.append((id: changes.count, task: delegatedTasks[index], change: .resolve(date: ReportSystem.default.date, employee: self)))
             }
         }
 

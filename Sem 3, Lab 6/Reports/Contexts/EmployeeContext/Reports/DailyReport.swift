@@ -28,7 +28,7 @@ extension ReportSystem.EmployeesContext {
             guard state == .open else { return }
             
             for change in employee.changes {
-                if !changes.contains(where: { $0.id == change.id }) {
+                if !changes.contains(where: { $0.id == change.id }) {  // Тут пройтись дебагом
                     changes.append(change)
                 }
             }

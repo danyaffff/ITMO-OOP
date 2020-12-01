@@ -25,7 +25,7 @@ extension ReportSystem.ProjectContext.Project.Stage {
         public let stage: Stage
         
         /// Returns the task's contructor.
-        private(set) public var contructor: Employee
+        private(set) public var employee: Employee
         
         /// Returns the task's message.
         private(set) public var message: String
@@ -35,7 +35,7 @@ extension ReportSystem.ProjectContext.Project.Stage {
         private init(id: Int, message: String, contructor: Employee, stage: Stage) {
             self.id = id
             self.message = message
-            self.contructor = contructor
+            self.employee = contructor
             self.stage = stage
         }
         
@@ -48,13 +48,23 @@ extension ReportSystem.ProjectContext.Project.Stage {
         }
         
         /// Sets new contructor
-        internal func set(contructor: Employee) {
-            self.contructor = contructor
+        internal func set(employee: Employee) {
+            self.employee = employee
         }
         
         /// Sets task state.
         internal func set(state: TaskState) {
             self.state = state
+        }
+        
+        public func edit(field: Field) {
+            guard state != .resolved else { return }
+            
+            switch field {
+            case .message(let text):
+                message = text
+                employee.changes.append((id: employee.changes.count, task: self, change: .message(date: ReportSystem.default.date, employee: employee)))
+            }
         }
         
         public static func == (lhs: Task, rhs: Task) -> Bool {
@@ -72,6 +82,11 @@ extension ReportSystem.ProjectContext.Project.Stage {
             
             /// Task resolved.
             case resolved
+        }
+        
+        //MARK: - Structures
+        public enum Field {
+            case message(text: String)
         }
     }
 }

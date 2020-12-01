@@ -52,22 +52,22 @@ extension ReportSystem {
         public enum Change: Equatable {
             
             /// Opened the task.
-            case open(date: Date)
+            case open(date: Date, employee: Employee)
             
             /// Activated the task.
-            case activate(date: Date)
+            case activate(date: Date, employee: Employee)
             
             /// Resolved the task.
-            case resolve(date: Date)
+            case resolve(date: Date, employee: Employee)
             
             /// Added the task.
-            case add(date: Date)
-            
-            /// Changed the title.
-            case title(date: Date)
+            case add(date: Date, employee: Employee)
             
             /// Changed the message.
-            case message(date: Date)
+            case message(date: Date, employee: Employee)
+            
+            /// Delegeted employee.
+            case employee(date: Date, employee: Employee)
         }
     }
 }
