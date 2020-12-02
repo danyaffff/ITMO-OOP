@@ -68,6 +68,42 @@ extension ReportSystem {
             
             /// Delegeted employee.
             case employee(date: Date, employee: Employee)
+            
+            /// Returns the date of change.
+            func getDate() -> Date {
+                switch self {
+                case .open(let date, _):
+                    return date
+                case .activate(let date, _):
+                    return date
+                case .resolve(let date, _):
+                    return date
+                case .add(let date, _):
+                    return date
+                case .message(let date, _):
+                    return date
+                case .employee(let date, _):
+                    return date
+                }
+            }
+            
+            /// Returns the employee of change.
+            func getEmployee() -> Employee {
+                switch self {
+                case .open(_, let employee):
+                    return employee
+                case .activate(_, let employee):
+                    return employee
+                case .resolve(_, let employee):
+                    return employee
+                case .add(_, let employee):
+                    return employee
+                case .message(_, let employee):
+                    return employee
+                case .employee(_, let employee):
+                    return employee
+                }
+            }
         }
     }
 }

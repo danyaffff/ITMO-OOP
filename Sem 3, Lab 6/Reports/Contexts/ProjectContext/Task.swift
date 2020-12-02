@@ -12,7 +12,7 @@ extension ReportSystem.ProjectContext.Project.Stage {
     public final class Task: Equatable {
         
         public typealias Stage = ReportSystem.ProjectContext.Project.Stage
-        public typealias Employee = ReportSystem.EmployeesContext.Employee
+        public typealias Change = ReportSystem.EmployeesContext.Change
         
         //MARK: - Properties
         /// Returns the task id.
@@ -24,36 +24,52 @@ extension ReportSystem.ProjectContext.Project.Stage {
         /// Returns the stage the task is in.
         public let stage: Stage
         
-        /// Returns the task's contructor.
+        /// Returns the contructor of task.
         private(set) public var employee: Employee
         
-        /// Returns the task's message.
+        /// Returns the message of task.
         private(set) public var message: String
+        
+        /// Returns the changes.
+        private(set) internal var changes = [Change]()
+        
+        /// Returns the creation time.
+        let creation: Date
         
         //MARK: - Initialization
         /// Private initilizator.
-        private init(id: Int, message: String, contructor: Employee, stage: Stage) {
+        private init(id: Int, message: String, employee: Employee, stage: Stage, creation: Date) {
             self.id = id
             self.message = message
-            self.employee = contructor
+            self.employee = employee
             self.stage = stage
+            self.creation = creation
         }
         
         //MARK: - Methods
         /// Returns new task instance
-        public class func task(id: Int, message: String, contructor: Employee, stage: Stage) -> Task {
-            let task = Task(id: id, message: message, contructor: contructor, stage: stage)
-            contructor.delegate(task: task)
+        public class func task(id: Int, message: String, employee: Employee, stage: Stage) -> Task {
+            let task = Task(id: id, message: message, employee: employee, stage: stage, creation: ReportSystem.default.date)
+            employee.delegate(task: task)
             return task
         }
         
         /// Sets new contructor
         internal func set(employee: Employee) {
+            changes.append(.employee(date: ReportSystem.default.date, employee: self.employee))
             self.employee = employee
         }
         
         /// Sets task state.
         internal func set(state: TaskState) {
+            switch state {
+            case .open:
+                changes.append(.open(date: ReportSystem.default.date, employee: employee))
+            case .active:
+                changes.append(.activate(date: ReportSystem.default.date, employee: employee))
+            case .resolved:
+                changes.append(.resolve(date: ReportSystem.default.date, employee: employee))
+            }
             self.state = state
         }
         
@@ -64,6 +80,7 @@ extension ReportSystem.ProjectContext.Project.Stage {
             case .message(let text):
                 message = text
                 employee.changes.append((id: employee.changes.count, task: self, change: .message(date: ReportSystem.default.date, employee: employee)))
+                changes.append(.message(date: ReportSystem.default.date, employee: employee))
             }
         }
         

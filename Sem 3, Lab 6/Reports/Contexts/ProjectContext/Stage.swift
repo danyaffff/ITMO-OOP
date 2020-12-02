@@ -41,7 +41,7 @@ extension ReportSystem.ProjectContext.Project {
             for (index, task) in tasks.enumerated() {
                 switch task {
                 case .task(let message, let contructor):
-                    self.tasks.append(Task.task(id: index, message: message, contructor: contructor, stage: self))
+                    self.tasks.append(Task.task(id: index, message: message, employee: contructor, stage: self))
                 }
             }
         }

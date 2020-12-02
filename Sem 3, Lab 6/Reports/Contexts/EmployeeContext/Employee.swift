@@ -38,10 +38,10 @@ extension ReportSystem.EmployeesContext {
         internal(set) public var changes = [(id: Int, task: Task, change: Change)]()
 
         /// Returns the current report.
-        internal(set) var report: Report? = nil
+        internal(set) public var report: Report? = nil
         
         /// Returns all reports made by the employee.
-        internal(set) var reports = [Report]()
+        internal(set) public var reports = [Report]()
         
         public var description: String {
             var returned: [String] = ["\(id). \(name)"]
