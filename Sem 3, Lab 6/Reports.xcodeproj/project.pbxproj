@@ -19,6 +19,8 @@
 		A5DFAE8A2576C16C00029A76 /* DailyReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DFAE892576C16C00029A76 /* DailyReport.swift */; };
 		A5DFAE8D2576C19000029A76 /* StageReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DFAE8C2576C19000029A76 /* StageReport.swift */; };
 		A5DFAE902576D26300029A76 /* Array+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DFAE8F2576D26300029A76 /* Array+Extensions.swift */; };
+		A5DFAE9325782FE900029A76 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DFAE9225782FE900029A76 /* Date+Extensions.swift */; };
+		A5DFAEAA2578506300029A76 /* DateFormatter+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5DFAEA92578506300029A76 /* DateFormatter+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -47,6 +49,8 @@
 		A5DFAE892576C16C00029A76 /* DailyReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyReport.swift; sourceTree = "<group>"; };
 		A5DFAE8C2576C19000029A76 /* StageReport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StageReport.swift; sourceTree = "<group>"; };
 		A5DFAE8F2576D26300029A76 /* Array+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Extensions.swift"; sourceTree = "<group>"; };
+		A5DFAE9225782FE900029A76 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		A5DFAEA92578506300029A76 /* DateFormatter+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +86,7 @@
 				A544AD2C256AE5F100BCC0C0 /* main.swift */,
 				A544AD48256F077800BCC0C0 /* ReportSystem */,
 				A544AD49256F078400BCC0C0 /* Contexts */,
-				A5DFAE8F2576D26300029A76 /* Array+Extensions.swift */,
+				A5DFAEAC2578565500029A76 /* Extensions */,
 			);
 			path = Reports;
 			sourceTree = "<group>";
@@ -133,6 +137,16 @@
 				A5DFAE8C2576C19000029A76 /* StageReport.swift */,
 			);
 			path = Reports;
+			sourceTree = "<group>";
+		};
+		A5DFAEAC2578565500029A76 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				A5DFAE8F2576D26300029A76 /* Array+Extensions.swift */,
+				A5DFAE9225782FE900029A76 /* Date+Extensions.swift */,
+				A5DFAEA92578506300029A76 /* DateFormatter+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,7 +208,9 @@
 			files = (
 				A5DFAE8A2576C16C00029A76 /* DailyReport.swift in Sources */,
 				A544AD2D256AE5F100BCC0C0 /* main.swift in Sources */,
+				A5DFAEAA2578506300029A76 /* DateFormatter+Extensions.swift in Sources */,
 				A544AD3C256AE63200BCC0C0 /* Employee.swift in Sources */,
+				A5DFAE9325782FE900029A76 /* Date+Extensions.swift in Sources */,
 				A544AD3E256AE63200BCC0C0 /* Task.swift in Sources */,
 				A5DFAE8D2576C19000029A76 /* StageReport.swift in Sources */,
 				A544AD41256AE63200BCC0C0 /* ProjectContext.swift in Sources */,

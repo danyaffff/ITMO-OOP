@@ -9,6 +9,9 @@ import Foundation
 
 extension ReportSystem.EmployeesContext {
     
+    /**
+     A basic interface that allows you to structure the concept of a report.
+     */
     public class Report: Equatable {
         
         //MARK: - Properties

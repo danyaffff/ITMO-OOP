@@ -9,13 +9,23 @@ import Foundation
 
 extension ReportSystem.EmployeesContext {
     
-    public final class DailyReport: Report {
+    public final class DailyReport: Report, CustomStringConvertible {
         
         public typealias Task = ReportSystem.ProjectContext.Project.Stage.Task
         
         //MARK: - Properties
         /// Returns the added changes.
         private(set) public var changes = [(id: Int, task: Task, change: Change)]()
+        
+        public var description: String {
+            var returned = [String]()
+            
+            for change in changes {
+                returned.append("\(change.task) : \(change.change)")
+            }
+            
+            return returned.joined(separator: "\n")
+        }
         
         //MARK: - Methods
         /// Returns new daily report instance.

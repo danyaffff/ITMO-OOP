@@ -8,8 +8,10 @@
 import Foundation
 
 extension ReportSystem.ProjectContext {
-    
-    public final class Project {
+    /**
+     An interface that allows you to work on a project, giving access to viewing and managing development stages and tasks.
+     */
+    public final class Project: CustomStringConvertible {
         
         public typealias TaskRepresentation = ReportSystem.ProjectContext.Project.Stage.TaskRepresentation
         public typealias Employee = ReportSystem.EmployeesContext.Employee
@@ -18,6 +20,8 @@ extension ReportSystem.ProjectContext {
         public typealias StageReport = ReportSystem.EmployeesContext.StageReport
         
         //MARK: - Properties
+        private(set) public var name: String
+        
         /// Returns the project's stages.
         private(set) public var stages = [Stage]()
         
@@ -33,14 +37,28 @@ extension ReportSystem.ProjectContext {
         /// Returns the real number of reports.
         internal var numberOfReports: Int = 0
         
-        //MARK: - Initialization
+        public var description: String {
+            var returned = [String](arrayLiteral: "▿ \(name)")
+            
+            if stages.count > 0 {
+                for stage in stages {
+                    returned.append("  \(stage)")
+                }
+            }
+            
+            return returned.joined(separator: "\n")
+        }
+        
+        //MARK: - Initializer
         /// Private initializatior.
-        private init() {}
+        private init(name: String) {
+            self.name = name
+        }
         
         //MARK: - Methods
         /// Returns new project instance.
-        public class func project() -> Project {
-            return Project()
+        public class func project(name: String) -> Project {
+            return Project(name: name)
         }
         
         /// Adds new stages to project.
@@ -78,6 +96,7 @@ extension ReportSystem.ProjectContext {
             }
         }
         
+        /// Returns an array of tasks that satisfy the given arguments
         private func searchTasks(of type: TimeSearch? = nil, with date: Date? = nil, employee: Employee? = nil) -> [Task] {
             var returned = [Task]()
             
@@ -89,9 +108,9 @@ extension ReportSystem.ProjectContext {
             } else {
                 switch type! {
                 case .creation:
-                    predicate = { $0.creation == date! }
+                    predicate = { $0.creation.compare(with: date!) }
                 case .change:
-                    predicate = { $0.changes.last?.getDate() == date! }
+                    predicate = { $0.changes.last?.getDate().compare(with: date!) ?? false }
                 }
             }
             

@@ -9,7 +9,10 @@ import Foundation
 
 extension ReportSystem.ProjectContext.Project {
     
-    public final class Stage {
+    /**
+     An interface that allows you to work in detail with the development stage.
+     */
+    public final class Stage: CustomStringConvertible {
         
         public typealias Employee = ReportSystem.EmployeesContext.Employee
         
@@ -23,7 +26,19 @@ extension ReportSystem.ProjectContext.Project {
         /// Returns the added message.
         private(set) public var message: String
         
-        //MARK: - Initialization
+        public var description: String {
+            var returned = [String](arrayLiteral: "▿ \(message)")
+            
+            if tasks.count > 0 {
+                for task in tasks {
+                    returned.append("    \(task)")
+                }
+            }
+            
+            return returned.joined(separator: "\n")
+        }
+        
+        //MARK: - Initializer
         /// Private initializator.
         private init(id: Int, message: String) {
             self.id = id
@@ -38,14 +53,16 @@ extension ReportSystem.ProjectContext.Project {
         
         /// Adds new tasks to current stage.
         internal func add(tasks: [TaskRepresentation]) {
-            for (index, task) in tasks.enumerated() {
+            for task in tasks {
                 switch task {
-                case .task(let message, let contructor):
-                    self.tasks.append(Task.task(id: index, message: message, employee: contructor, stage: self))
+                case .task(let message, let employee):
+                    self.tasks.append(Task.task(id: self.tasks.count, message: message, employee: employee, stage: self))
+                    employee.delegate(task: self.tasks.last!)
                 }
             }
         }
         
+        //MAKR: - Structures
         /// Represents main tasks fields.
         public enum TaskRepresentation {
             

@@ -8,7 +8,9 @@
 import Foundation
 
 extension ReportSystem {
-    
+    /**
+     An interface that allows you to create, organize and manage employees.
+     */
     public final class EmployeesContext: CustomStringConvertible {
         
         /// Returns the added employees.
@@ -49,7 +51,7 @@ extension ReportSystem {
         }
         
         /// Change type.
-        public enum Change: Equatable {
+        public enum Change: Equatable, CustomStringConvertible {
             
             /// Opened the task.
             case open(date: Date, employee: Employee)
@@ -102,6 +104,23 @@ extension ReportSystem {
                     return employee
                 case .employee(_, let employee):
                     return employee
+                }
+            }
+            
+            public var description: String {
+                switch self {
+                case .open(let date, let employee):
+                    return "opened at \(DateFormatter.formatter.string(from: date)) by \(employee.name)"
+                case .activate(let date, let employee):
+                    return "activated at \(DateFormatter.formatter.string(from: date)) by \(employee.name)"
+                case .resolve(let date, let employee):
+                    return "resolved at \(DateFormatter.formatter.string(from: date)) by \(employee.name)"
+                case .add(let date, let employee):
+                    return "added at \(DateFormatter.formatter.string(from: date)) by \(employee.name)"
+                case .message(let date, let employee):
+                    return "message changed at \(DateFormatter.formatter.string(from: date)) by \(employee.name)"
+                case .employee(let date, let employee):
+                    return "employee changed at \(DateFormatter.formatter.string(from: date)) by \(employee.name)"
                 }
             }
         }

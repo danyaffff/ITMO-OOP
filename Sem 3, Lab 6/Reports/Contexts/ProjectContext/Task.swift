@@ -9,7 +9,10 @@ import Foundation
 
 extension ReportSystem.ProjectContext.Project.Stage {
     
-    public final class Task: Equatable {
+    /**
+     An interface that allows you to work with the task in detail
+     */
+    public final class Task: Equatable, CustomStringConvertible {
         
         public typealias Stage = ReportSystem.ProjectContext.Project.Stage
         public typealias Change = ReportSystem.EmployeesContext.Change
@@ -36,7 +39,11 @@ extension ReportSystem.ProjectContext.Project.Stage {
         /// Returns the creation time.
         let creation: Date
         
-        //MARK: - Initialization
+        public var description: String {
+            return "▿ \(message) is \(state)"
+        }
+        
+        //MARK: - Initializer
         /// Private initilizator.
         private init(id: Int, message: String, employee: Employee, stage: Stage, creation: Date) {
             self.id = id
@@ -89,7 +96,7 @@ extension ReportSystem.ProjectContext.Project.Stage {
         }
         
         /// Tasks state.
-        public enum TaskState {
+        public enum TaskState: CustomStringConvertible {
             
             /// Task open.
             case open
@@ -99,6 +106,17 @@ extension ReportSystem.ProjectContext.Project.Stage {
             
             /// Task resolved.
             case resolved
+            
+            public var description: String {
+                switch self {
+                case .open:
+                    return "opened"
+                case .active:
+                    return "actived"
+                case .resolved:
+                    return "resolved"
+                }
+            }
         }
         
         //MARK: - Structures

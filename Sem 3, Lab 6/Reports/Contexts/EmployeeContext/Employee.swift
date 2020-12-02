@@ -8,7 +8,9 @@
 import Foundation
 
 extension ReportSystem.EmployeesContext {
-    
+    /**
+     An interface that allows you to interact with an employee.
+     */
     public final class Employee: Equatable, CustomStringConvertible {
         
         public typealias Stage = ReportSystem.ProjectContext.Project.Stage
@@ -44,14 +46,14 @@ extension ReportSystem.EmployeesContext {
         internal(set) public var reports = [Report]()
         
         public var description: String {
-            var returned: [String] = ["\(id). \(name)"]
+            var returned = [String](arrayLiteral: "▿ \(name)")
             
             if subordinates.count > 0 {
                 for subordinate in subordinates {
-                    var nesting = "-"
+                    var nesting = " "
                     
                     for _ in 0 ..< distance {
-                        nesting += "-"
+                        nesting += "  "
                     }
                     
                     returned.append("\(nesting) \(subordinate)")
@@ -131,17 +133,28 @@ extension ReportSystem.EmployeesContext {
         }
 
         /// Activates the first open task.
-        public func activate() {
+        public func activate(at id: Int? = nil) {
             if delegatedTasks.contains(where: { $0.state == .active }) { return }
 
-            if let index = delegatedTasks.firstIndex(where: { $0.state == .open }) {
-                delegatedTasks[index].set(state: .active)
-                changes.append((id: changes.count, task: delegatedTasks[index], change: .activate(date: ReportSystem.default.date, employee: self)))
+            var task: Task
+            
+            if let _ = id {
+                if let index = delegatedTasks.firstIndex(where: { $0.id == id! }) {
+                    delegatedTasks[index].set(state: .active)
+                    task = delegatedTasks[index]
+                } else { return }
+            } else {
+                if let index = delegatedTasks.firstIndex(where: { $0.state == .open }) {
+                    delegatedTasks[index].set(state: .active)
+                    task = delegatedTasks[index]
+                } else { return }
             }
+            
+            changes.append((id: changes.count, task: task, change: .activate(date: ReportSystem.default.date, employee: self)))
         }
 
         /// Completes the active task.
-        public func complete() {
+        public func complete(at id: Int? = nil) {
             if let index = delegatedTasks.firstIndex(where: { $0.state == .active }) {
                 delegatedTasks[index].set(state: .resolved)
                 changes.append((id: changes.count, task: delegatedTasks[index], change: .resolve(date: ReportSystem.default.date, employee: self)))
@@ -158,6 +171,9 @@ extension ReportSystem.EmployeesContext {
                 ReportSystem.default.projectContext.project!.numberOfReports += 1
 
             case .stage:
+                guard let _ = ReportSystem.default.projectContext.project?.stage else { return }
+                if ReportSystem.default.projectContext.project!.stage!.tasks.contains(where: { $0.state != .resolved }) { return }
+                
                 report = StageReport.create(id: ReportSystem.default.projectContext.project!.stageReports.count, title: title, message: message, date: ReportSystem.default.date, employee: self)
             }
         }

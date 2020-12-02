@@ -7,7 +7,11 @@
 
 import Foundation
 
-public final class ReportSystem {
+/** An interface to the project management class, where you manage the creation of the project.
+ 
+ The ReportingSystem class provides a programming interface for interacting with the reporting system. The reporting system allows you to automate the creation of reports for a specific multi-step project. For example, you can create a worker, add several tasks to him, and then manage him by performing tasks and creating reports on the work done.
+ */
+public final class ReportSystem: CustomStringConvertible {
     
     //MARK: - Properties
     /// Returns the singleton of Report System.
@@ -21,6 +25,16 @@ public final class ReportSystem {
     
     /// Returns current date.
     private(set) public var date = Date()
+    
+    public var description: String {
+        var returned = [String](arrayLiteral: "Employees:")
+        
+        returned.append("\(employeesContext)\n\n")
+        returned.append("Project:")
+        returned.append("\(projectContext)")
+        
+        return returned.joined(separator: "\n")
+    }
     
     //MARK: - Initializer
     /// Private initializator.

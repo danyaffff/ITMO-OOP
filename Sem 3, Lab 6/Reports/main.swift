@@ -7,11 +7,17 @@
 
 import Foundation
 
-let danya = ReportSystem.default.employeesContext.createEmployee(name: "Данбка")!
-let project = ReportSystem.default.projectContext.createProject()!.add(stages: [
+let danya = ReportSystem.default.employeesContext.createEmployee(name: "Данька")!
+let eugénie = ReportSystem.default.employeesContext.createEmployee(name: "Женечбка❤️", head: danya)!
+let kolya = ReportSystem.default.employeesContext.createEmployee(name: "Колька", head: danya)!
+let alina = ReportSystem.default.employeesContext.createEmployee(name: "Алинка", head: kolya)!
+let masha = ReportSystem.default.employeesContext.createEmployee(name: "Машка", head: alina)!
+let dima = ReportSystem.default.employeesContext.createEmployee(name: "СлайсОфКекус", head: eugénie)!
+
+let project = ReportSystem.default.projectContext.createProject(name: "Проектик")!.add(stages: [
     .stage(message: "Первая стадия", tasks: [
         .task(message: "Первое задание", contructor: danya),
-        .task(message: "Второе задание", contructor: danya)
+        .task(message: "Второе задание", contructor: eugénie)
     ]),
     .stage(message: "Вторая стадия", tasks: [
         .task(message: "Последнее задание", contructor: danya)
@@ -29,7 +35,7 @@ danya.complete()
 
 danya.delegatedTasks[0].edit(field: .message(text: "Измененный комментарий к заданию"))
 
-danya.report!.edit(field: .title(text: "Измененный заголовок"))
+danya.report!.edit(field: .title(text: "Измененный заголовок отчета"))
 
 danya.report!.synchronize()
 
@@ -37,14 +43,29 @@ ReportSystem.default.move()
 
 danya.delegatedTasks[0].edit(field: .message(text: "Это ничего не должно поменять"))
 
-danya.createReport(title: "Второй отчет", message: "Описание второго отчета", type: .day)
+eugénie.activate()
+danya.activate(at: 2)
+eugénie.complete()
+danya.complete(at: 2)
+
+eugénie.createReport(title: "Второй отчет", message: "Описание второго отчета", type: .day)
+danya.createReport(title: "Третий отчет", message: "Описание", type: .day)
+
+eugénie.report!.synchronize()
+danya.report!.synchronize()
+
+ReportSystem.default.move()
+
+danya.createReport(title: "Отчет за стадию", message: "Провер_очка", type: .stage)
 
 danya.report!.synchronize()
 
 ReportSystem.default.move()
 
-ReportSystem.default
+let taskSearchedByID = ReportSystem.default.projectContext.project!.serach(by: .id(stageID: 0, taskID: 0)).first
+let taskSearchedByCreation = ReportSystem.default.projectContext.project!.serach(by: .time(type: .creation, date: Date()))
+let taskSearchedByEmployee = ReportSystem.default.projectContext.project!.serach(by: .employee(danya))
+let taskSearchedByEmployeesChange = ReportSystem.default.projectContext.project!.serach(by: .employeeChange(danya))
+let taskSearchedBySubordinates = ReportSystem.default.projectContext.project!.serach(by: .subordinatesTasks(danya))
 
-//▿ Change
-//  ▿ add : 1 element
-//    ▿ da
+print(ReportSystem.default)

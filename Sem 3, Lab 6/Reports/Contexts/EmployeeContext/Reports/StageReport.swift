@@ -8,11 +8,21 @@
 import Foundation
 
 extension ReportSystem.EmployeesContext {
-    public final class StageReport: Report {
+    public final class StageReport: Report, CustomStringConvertible {
         
         //MARK: - Properties
         /// Returns the added reports.
         private(set) public var reports = [DailyReport]()
+        
+        public var description: String {
+            var returned = [String]()
+            
+            for report in reports {
+                returned.append("\(report)")
+            }
+            
+            return returned.joined(separator: "\n")
+        }
         
         //MARK: - Methods
         /// Returns new stage report instance.
