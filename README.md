@@ -6,6 +6,6 @@
 3. [Race](https://github.com/danyaffff/ITMO-OOP/tree/master/Sem%203%2C%20Lab%203)
 4. [Backups](https://github.com/danyaffff/ITMO-OOP/tree/master/Sem%203%2C%20Lab%204)
 5. [Banks](https://github.com/danyaffff/ITMO-OOP/tree/master/Sem%203%2C%20Lab%205)
-6. [Reports](https://github.com/danyaffff/ITMO-OOP/tree/master/Sem%203%2C%20Lab%206) ::This version doesn't realizes all features::
+6. [Reports](https://github.com/danyaffff/ITMO-OOP/tree/master/Sem%203%2C%20Lab%206)
 
 [Tasks](https://github.com/danyaffff/ITMO-OOP/tree/master/Tasks)
