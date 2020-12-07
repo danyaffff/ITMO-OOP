@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 let danya = ReportSystem.default.employeesContext.createEmployee(name: "Данька")!
 let eugénie = ReportSystem.default.employeesContext.createEmployee(name: "Женечбка❤️", head: danya)!
@@ -37,7 +38,7 @@ danya.delegatedTasks[0].edit(field: .message(text: "Измененный ком�
 
 danya.report!.edit(field: .title(text: "Измененный заголовок отчета"))
 
-danya.report!.synchronize()
+danya.report!.asDailyReport.synchronize()
 
 ReportSystem.default.move()
 
@@ -51,14 +52,14 @@ danya.complete(at: 2)
 eugénie.createReport(title: "Второй отчет", message: "Описание второго отчета", type: .day)
 danya.createReport(title: "Третий отчет", message: "Описание", type: .day)
 
-eugénie.report!.synchronize()
-danya.report!.synchronize()
+eugénie.report!.asDailyReport.synchronize()
+danya.report!.asDailyReport.synchronize()
 
 ReportSystem.default.move()
 
 danya.createReport(title: "Отчет за стадию", message: "Провер_очка", type: .stage)
 
-danya.report!.synchronize()
+danya.report!.asStageReport.synchronize(of: .command)
 
 ReportSystem.default.move()
 

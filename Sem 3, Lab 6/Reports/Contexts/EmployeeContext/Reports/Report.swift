@@ -36,6 +36,16 @@ extension ReportSystem.EmployeesContext {
         /// Returns the type of report.
         private(set) public var type: ReportType
         
+        /// Returns self as daily report.
+        public var asDailyReport: DailyReport {
+            return self as! DailyReport
+        }
+        
+        /// Returns self as stage report.
+        public var asStageReport: StageReport {
+            return self as! StageReport
+        }
+        
         //MARK: - Initilizer
         internal init(id: Int, title: String, message: String, date: Date, employee: Employee, type: ReportType) {
             self.id = id
@@ -47,10 +57,6 @@ extension ReportSystem.EmployeesContext {
         }
         
         //MARK: - Methods
-        /// Synchronizes the changes.
-        internal func synchronize() {
-            fatalError("Synchronize was called from base report class.")
-        }
         
         /// Edits data in field.
         public func edit(field: Field) {

@@ -31,25 +31,30 @@ extension ReportSystem.EmployeesContext {
         }
         
         /// Synchronizes the reports.
-        override public func synchronize() {
+        public func synchronize(of type: ReportType) {
             guard state == .open else { return }
             
             let dailyReports = ReportSystem.default.projectContext.project!.dailyReports
             
-            switch employee.head {
-            case nil:
-                for report in dailyReports {
-                    if !reports.contains(where: { $0 == report }) {
-                        reports.append(report)
-                    }
-                }
-            default:
+            switch type {
+            case .employee:
                 for report in dailyReports.filter({ $0.employee == employee }) {
                     if !reports.contains(where: { $0 == report }) {
                         reports.append(report)
                     }
                 }
+            case .command:
+                for report in dailyReports {
+                    if !reports.contains(where: { $0 == report && report.employee.isSubordinate(of: self.employee) }) {
+                        reports.append(report)
+                    }
+                }
             }
+        }
+        
+        public enum ReportType {
+            case employee
+            case command
         }
     }
 }

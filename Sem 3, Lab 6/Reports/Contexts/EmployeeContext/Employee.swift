@@ -42,6 +42,9 @@ extension ReportSystem.EmployeesContext {
         /// Returns the current report.
         internal(set) public var report: Report? = nil
         
+        /// Returns report of subordinates changes.
+        private(set) public var subordinatesReport: StageReport? = nil
+        
         /// Returns all reports made by the employee.
         internal(set) public var reports = [Report]()
         
@@ -175,6 +178,17 @@ extension ReportSystem.EmployeesContext {
                 if ReportSystem.default.projectContext.project!.stage!.tasks.contains(where: { $0.state != .resolved }) { return }
                 
                 report = StageReport.create(id: ReportSystem.default.projectContext.project!.stageReports.count, title: title, message: message, date: ReportSystem.default.date, employee: self)
+            }
+        }
+        
+        /// Checks if self is a subordinate employee.
+        internal func isSubordinate(of employee: Employee) -> Bool {
+            if self.head == nil { return false }
+            
+            if self.head == employee {
+                return true
+            } else {
+                return self.head!.isSubordinate(of: employee)
             }
         }
 

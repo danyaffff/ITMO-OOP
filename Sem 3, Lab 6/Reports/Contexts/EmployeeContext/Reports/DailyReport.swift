@@ -34,7 +34,7 @@ extension ReportSystem.EmployeesContext {
         }
         
         /// Synchronizes the changes.
-        override public func synchronize() {
+        public func synchronize() {
             guard state == .open else { return }
             
             for change in employee.changes {
