@@ -181,11 +181,21 @@ extension ReportSystem.EmployeesContext {
             }
         }
         
+        public func change(head: Employee) {
+            guard let _ = self.head else { return }
+            if head.isSubordinate(of: self) { return }
+            if self.head! == head { return }
+            
+            self.head!.subordinates.remove(at: self.head!.subordinates.firstIndex(where: { $0 == self })!)
+            self.head = head
+            head.subordinates.append(self)
+        }
+        
         /// Checks if self is a subordinate employee.
         internal func isSubordinate(of employee: Employee) -> Bool {
             if self.head == nil { return false }
             
-            if self.head == employee {
+            if self.head! == employee {
                 return true
             } else {
                 return self.head!.isSubordinate(of: employee)
