@@ -207,14 +207,22 @@ extension ReportSystem.EmployeesContext {
         }
         
         //MARK: - Structures
+        /// Represents changes that have been made with task.
         public class Change {
+            
+            //MARK: - Properties
+            /// Returns the id of change.
             public let id: Int
             
+            /// Returns the changed task.
             public let task: Task
             
+            /// Returns the action
             public let action: Action
             
-            init(id: Int, task: Task, action: Action) {
+            //MARK: - Initilizer
+            /// Standard initilizer.
+            internal init(id: Int, task: Task, action: Action) {
                 self.id = id
                 self.task = task
                 self.action = action
