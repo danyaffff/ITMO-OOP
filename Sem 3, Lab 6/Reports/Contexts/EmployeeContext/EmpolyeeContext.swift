@@ -50,8 +50,8 @@ extension ReportSystem {
             case stage
         }
         
-        /// Change type.
-        public enum Change: Equatable, CustomStringConvertible {
+        /// Action type.
+        public enum Action: Equatable, CustomStringConvertible {
             
             /// Opened the task.
             case open(date: Date, employee: Employee)
@@ -71,7 +71,7 @@ extension ReportSystem {
             /// Delegeted employee.
             case employee(date: Date, employee: Employee)
             
-            /// Returns the date of change.
+            /// Returns the date of action.
             func getDate() -> Date {
                 switch self {
                 case .open(let date, _):
@@ -89,7 +89,7 @@ extension ReportSystem {
                 }
             }
             
-            /// Returns the employee of change.
+            /// Returns the employee of action.
             func getEmployee() -> Employee {
                 switch self {
                 case .open(_, let employee):

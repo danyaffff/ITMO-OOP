@@ -12,16 +12,17 @@ extension ReportSystem.EmployeesContext {
     public final class DailyReport: Report, CustomStringConvertible {
         
         public typealias Task = ReportSystem.ProjectContext.Project.Stage.Task
+        public typealias Change = ReportSystem.EmployeesContext.Employee.Change
         
         //MARK: - Properties
         /// Returns the added changes.
-        private(set) public var changes = [(id: Int, task: Task, change: Change)]()
+        private(set) public var changes = [Change]()
         
         public var description: String {
             var returned = [String]()
             
             for change in changes {
-                returned.append("\(change.task) : \(change.change)")
+                returned.append("\(change.task) : \(change.action)")
             }
             
             return returned.joined(separator: "\n")

@@ -15,7 +15,8 @@ extension ReportSystem.ProjectContext.Project.Stage {
     public final class Task: Equatable, CustomStringConvertible {
         
         public typealias Stage = ReportSystem.ProjectContext.Project.Stage
-        public typealias Change = ReportSystem.EmployeesContext.Change
+        public typealias Change = ReportSystem.EmployeesContext.Employee.Change
+        public typealias Action = ReportSystem.EmployeesContext.Action
         
         //MARK: - Properties
         /// Returns the task id.
@@ -34,7 +35,7 @@ extension ReportSystem.ProjectContext.Project.Stage {
         private(set) public var message: String
         
         /// Returns the changes.
-        private(set) internal var changes = [Change]()
+        private(set) internal var changes = [Action]()
         
         /// Returns the creation time.
         let creation: Date
@@ -86,7 +87,7 @@ extension ReportSystem.ProjectContext.Project.Stage {
             switch field {
             case .message(let text):
                 message = text
-                employee.changes.append((id: employee.changes.count, task: self, change: .message(date: ReportSystem.default.date, employee: employee)))
+                employee.changes.append(Change(id: employee.changes.count, task: self, action: .message(date: ReportSystem.default.date, employee: employee)))
                 changes.append(.message(date: ReportSystem.default.date, employee: employee))
             }
         }
